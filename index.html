@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CalculatorAbdula</title>
+
+
+    <script type="text/javascript">
+      var result = "none";
+      var x = "";
+      var y = "";
+      var size = 2.2;
+      var operation_symb = "none";
+
+      function fff (button) {
+        if(result != "none"){
+          document.getElementById('result').value = "";
+          result = "none";
+          size = 2.2;
+          document.getElementById('result').style.fontSize = size + "vw";
+        }
+
+
+        if(operation_symb == "none") {
+          x += button.value;
+          document.getElementById('result').value += button.value;
+        }
+        else {
+          y += button.value;
+          document.getElementById('result').value += button.value;
+        }
+
+        if(document.getElementById('result').value.length > 13) {
+          document.getElementById('result').style.fontSize = size + "vw";
+          size -= 0.08;
+        }
+
+       }
+
+      function operation (asd) {
+        operation_symb = asd.value;
+        document.getElementById('result').value += operation_symb;
+        if(document.getElementById('result').value.length > 13) {
+          size -= 0.18;
+          document.getElementById('result').style.fontSize = size + "vw";
+        }
+      }
+
+      function enter () {
+        if(operation_symb == " + ") {
+          result = +x + +y;
+        } else if(operation_symb == " - ") {
+          result = +x - +y;
+        } else if(operation_symb == " * ") {
+          result = +x * +y;
+        } else {
+          result = +x / +y;
+        }
+
+        document.getElementById('result').value = " = " + result;
+        x = "";
+        y = "";
+        operation_symb = "none";
+        size = 2.2;
+        document.getElementById('result').style.fontSize = 2 + "vw";
+      }
+
+      function clearresult () {
+        document.getElementById('result').value = "";
+        result = 0;
+        x = "";
+        y = 0;
+        operation_symb = "none";
+        size = 2.2;
+        document.getElementById('result').style.fontSize = size + "vw";
+      }
+
+
+
+  </script>
+
+  </head>
+  <body>
+
+  <div class="calculator">
+    <div class=calculator_padding>
+    <input type="text" id="result" value="" style="width: 252px; height: 62px; margin-bottom: 5px; font-size: 30px; background-color: #ff6b30; border: none; color: #d4f8e8; text-indent: 20px;">
+    <br/>
+
+    <input type="button" name="0" value="C" onclick="clearresult(this)" class="button">
+    <input type="button" name="0" value="( )" onclick="(this)" class="button">
+    <input type="button" name="0" value="%" onclick="clearresult(this)" class="button">
+    <input type="button" name="division" value=" / " onclick="operation(this)" class="button">
+
+    <br/>
+    <input type="button" name="7" value="7" onclick="fff(this)" class="button">
+    <input type="button" name="8" value="8" onclick="fff(this)" class="button">
+    <input type="button" name="9" value="9" onclick="fff(this)" class="button">
+    <input type="button" name="multiplication" value=" * " onclick="operation(this)" class="button">
+    <br/>
+    <input type="button" name="4" value="4" onclick="fff(this)" class="button">
+    <input type="button" name="5" value="5" onclick="fff(this)" class="button">
+    <input type="button" name="6" value="6" onclick="fff(this)" class="button">
+    <input type="button" name="minus" value=" - " onclick="operation(this)" class="button">
+    <br/>
+    <input type="button" name="1" value="1" onclick="fff(this)" class="button">
+    <input type="button" name="2" value="2" onclick="fff(this)" class="button">
+    <input type="button" name="3" value="3" onclick="fff(this)" class="button">
+    <input type="button" name="plus" value=" + " onclick="operation(this)" class="button">
+
+    <br/>
+    <input type="button" name="0" value=" " onclick="clearresult(this)" class="button">
+    <input type="button" name="0" value="0" onclick="fff(this)" class="button" class="button">
+    <input type="button" name="4" value="." onclick="fff(this)" class="button">
+    <input type="button" name="enter" value="=" onclick="enter(this)" class="button">
+    </div>
+  </div>
+
+
+    <style media="screen">
+      body {
+        background-color: #1eb2a6;
+      }
+
+      .calculator_padding {
+        margin-top: 100px;
+        width: 400px;
+        padding: 15px;
+      }
+
+      .calculator {
+        margin: auto;
+        width: 280px;
+        background-color: #ff9530;
+
+      }
+
+      .button {
+        border: 2px solid #ffa34d;
+        color: #d4f8e8;
+        margin-bottom: 2px;
+        font-size: 30px;
+          background-color: #ff9a3b;
+
+        width: 60px;
+        height: 60px;
+      }
+
+
+    </style>
+
+
+
+
+
+
+
+
+  </body>
+</html>
