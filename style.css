@@ -1,0 +1,98 @@
+body {
+	margin: 0;
+	background-color: #2D2D2D;
+}
+
+.main_container {
+	width: 1065px;
+	height: 360px;
+	overflow: hidden;
+	background-image: url("container_background.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1065px 360px;
+	margin: 70px 0 0 147px;
+}
+
+.container {
+	width: 785px;
+	height: 270px;
+	background-color: #F7FE72;
+	margin-left: 133px;
+	margin-top: 36px;
+	padding-left: 16px;
+	padding-top: 12px;
+}
+
+.block {
+	width: 57px;
+	height: 57px;
+	background-color: #78B5FF;
+	float: left;
+	margin: 3.5px;
+	transition: .05s;
+}
+.b1 {
+	background-image: url("block1_img.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 45px 45px;
+	background-color: #466FD5;
+}
+
+.b2 {
+	background-image: url("block2_img.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #466FD5;
+}
+.b3 {
+	background-image: url("block3_img.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #466FD5;
+}
+.b4 {
+	background-image: url("block4_img.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #466FD5;
+}
+
+
+
+
+.footer {
+	width: 1065px;
+	height: 123px;
+	margin-left: 147px;
+	margin-top: 7px;
+	background-image: url("footer_background.png");
+	background-size: 1065px 123px;
+	overflow: hidden;
+}
+
+
+.score {
+	 width: 100px;
+	 height: 40px;
+	 font-weight: 800;
+	 margin-left: 450px;
+	 margin-top: 30px;
+}
+
+.time {
+	 width: 100px;
+	 height: 40px;
+	 font-weight: 800;
+	 margin-left: 440px;
+}
+
+
+
+.visible {
+	visibility: visible;
+}
+.noVisible {
+	visibility: hidden;
+}
