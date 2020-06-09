@@ -1,0 +1,133 @@
+body {
+	margin: 0 auto;
+	margin-top: 100px;
+	margin-left: 100px;
+	font-family: 'Roboto', sans-serif;
+	background-color: #E7E7E7;
+}
+
+form {
+	float: left;
+	margin-right: 200px;
+}
+form label:first-child {
+	margin-right: 110px;
+	margin-left: 120px;
+}
+
+.coefficient {
+	margin-top: 15px;
+	width: 120px;
+	height: 40px;
+	border-radius: 2px;
+	border: 0.8px solid #E8E8E8;
+	color: #636363;
+	font-size: 18px;
+	text-align: center;
+}
+.summa {
+	margin-right: 38px;
+	margin-bottom: 200px;
+	width: 120px;
+	height: 40px;
+	border-radius: 2px;
+	border: 0.8px solid #E8E8E8;
+	color: #636363;
+	font-size: 18px;
+	text-align: center;
+	margin-left: 120px;
+}
+
+.result {
+	margin-bottom: 20px;
+	font-size: 80px;
+	color: #3C7AC7;
+	width: 326px;
+	margin-left: 600px;
+	margin-top: -120px;
+	text-align: center;
+}
+
+.buttons {
+	margin-top: 10px;
+	width: 160px;
+	height: 45px;
+	font-size: 17px;
+	border-radius: 5px;
+	background-color: #646F75;
+	border: none;
+	color: white;
+}
+
+.money {
+	display: -webkit-flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 200px;
+	font-size: 25px;
+	color: white;
+	background-color: #2EB8B8;
+	text-align: center;
+	height: 50px;
+	margin-bottom: 70px;
+	margin-left: 120px;
+	margin-top: 100px;
+	border-radius: 4px;
+}
+
+.target {
+	margin-left: 45px;
+	margin-right: 16px;
+	color: #636363;
+	text-align: center;
+}
+
+.youWin {
+	background-color: #2AEB41DB;
+	width: 326px;
+	margin: 10px 0 0 446px;
+	height: 35px;
+	border-radius: 4px;
+	color: white;
+	font-size: 18px;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.youLose {
+	background-color: #FD1919BF;
+	width: 326px;
+	margin: 10px 0 0 446px;
+	height: 35px;
+	border-radius: 4px;
+	color: white;
+	font-size: 18px;
+	display: -webkit-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+.container {
+	overflow: hidden;
+	width: 1100px;
+	height: 400px;
+	background-color: white;
+	margin-left: 30px;
+	border-radius: 8px;
+	box-shadow: 3px 3px 20px #CDCDCD;
+}
+
+
+
+
+
+
+
+
+
+

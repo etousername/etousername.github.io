@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nvuti</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="container">
+
+	<div class="money"></div>
+
+	<form>
+	<label for="summa">Сумма</label>
+	<label for="coefficient">Процент</label>
+	<br/>
+	<input type="text"  class="summa" id="summa" value="1">
+	<input type="text" class="coefficient" id="coefficient" value="90">
+	</form>
+	<div class="result">1.11</div>
+
+	<span class="target targetMenshe">0 - 899999</span>
+	<span class="target targetBolshe">100000 - 999999</span>
+	<br/>
+	<button class="buttons"id="menshe">Меньше</button>
+	<button class="buttons" id="bolshe">Больше</button>
+	<div class="winorlose"></div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>
