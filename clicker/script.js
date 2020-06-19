@@ -2,13 +2,13 @@ var score = JSON.parse(localStorage.getItem('score'))
 var addScore = JSON.parse(localStorage.getItem('addScore'))
 var addScoreTime = JSON.parse(localStorage.getItem('addScoreTime'))
 var upgradeBttnPriceFirst = JSON.parse(localStorage.getItem('upgradeBttnPriceFirst'))
-var upgradeLevelFirtst = 1
-var upgradeLevelSecond = 1
+var upgradeLevelFirst = JSON.parse(localStorage.getItem('upgradeLevelFirst'))
+var upgradeLevelSecond = JSON.parse(localStorage.getItem('upgradeLevelSecond'))
 var unlockBttnPrice = 200
 var upgradeBttnTimePrice = JSON.parse(localStorage.getItem('upgradeBttnTimePrice'))
 var checkSave = JSON.parse(localStorage.getItem('checkSave'))
 var checkUnlock = JSON.parse(localStorage.getItem('checkUnlock'))
-if(checkSave == 1){setAllValue()} else {score = 0; upgradeBttnPriceFirst = 30; upgradeBttnTimePrice = 100; addScore = 1; addScoreTime = 0; checkUnlock = 0;}
+if(checkSave == 1){setAllValue()} else {score = 0; upgradeBttnPriceFirst = 30; upgradeBttnTimePrice = 100; addScore = 1; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 1; checkUnlock = 0;}
 checkUpgrade()
 setAllValue() 
 
@@ -31,14 +31,14 @@ $('.upgradeBttn').click(function(){
 	if(score >= upgradeBttnPriceFirst) {
 		score -= upgradeBttnPriceFirst
 		addScore += 0.5
-		upgradeLevelFirtst++
+		upgradeLevelFirst++
 		upgradeBttnPriceFirst += upgradeBttnPriceFirst / 2 / 2
 
 		checkUpgrade()
 		setAllValue()
 		saveAll ()
 		$(this).addClass("animationUpgrade")
-		$('.upgradeLevel').html("Level " + upgradeLevelFirtst)
+		$('.upgradeLevel').html("Level " + upgradeLevelFirst)
 		setTimeout(function(){ $('.upgradeBttn').removeClass("animationUpgrade")}, 100)
 	}	
 })
@@ -83,6 +83,7 @@ $('.upgradeBttnTime').click(function(){
 		score -= upgradeBttnTimePrice
 	 	addScoreTime += 0.5; 
 		upgradeBttnTimePrice += upgradeBttnTimePrice / 2 / 2
+		upgradeLevelSecond++
 		setAllValue()
 		saveAll()
 		checkUpgrade()
@@ -116,6 +117,8 @@ function setAllValue () {
 	$('.clickBttn').html("CLICK " + "$" + addScore)
 	$('.upgradeBttn').html("Upgrade " + "$" + upgradeBttnPriceFirst.toFixed(0))
 	$('.upgradeBttnTime').html("Upgrade " + "$" + upgradeBttnTimePrice.toFixed(0))
+	$('.upgradeLevelFirst').html("Level " + upgradeLevelFirst)
+	$('.upgradeLevelTime').html("Level " + upgradeLevelSecond)
 	$('.score').css({'font-size': '3.6vw', 'top': '3vw'})
 	$('.barTimeText2').html('$' + addScoreTime)
 }
@@ -124,6 +127,8 @@ function saveAll (){
 	localStorage.setItem('score', JSON.stringify(score))
 	localStorage.setItem('upgradeBttnPriceFirst', JSON.stringify(upgradeBttnPriceFirst))
 	localStorage.setItem('upgradeBttnTimePrice', JSON.stringify(upgradeBttnTimePrice))
+	localStorage.setItem('upgradeLevelFirst', JSON.stringify(upgradeLevelFirst))
+	localStorage.setItem('upgradeLevelSecond', JSON.stringify(upgradeLevelSecond))
 	localStorage.setItem('addScore', JSON.stringify(addScore))
 	localStorage.setItem('addScoreTime', JSON.stringify(addScoreTime))
 	localStorage.setItem('checkSave', JSON.stringify(checkSave = 1))
