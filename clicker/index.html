@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>clicker game popitka 21</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="container">
+
+	<div class="upgradeContainer">
+		<div class="clickContainer">
+			<button class="clickBttn">CLICK $1</button>
+		</div>
+		<button class="upgradeBttn">Upgrade $30</button>
+		<div class="upgradeLevel">Level 1</div>
+	</div>
+
+	<div class="upgradeContainer">
+		<div class="clickContainerLock"></div>
+			<img src="lock_img.png" class="lock_img">
+			<button class="unlockBttn">Unlock $200</button>
+		<div class="clickContainer">
+			<div class="clickTime">
+				<div class="barTime"></div>
+				<div class="barTimeText1">3sec</div>
+				<div class="barTimeText2">$0.5</div>
+			</div>
+		</div>
+		<button class="upgradeBttnTime">Upgrade $100</button>
+		<div class="upgradeLevel">Level 0</div>
+	</div>
+
+	</div>
+
+
+	<div class="score">$0</div>
+
+<script src="jquery-3.5.1.min.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>
