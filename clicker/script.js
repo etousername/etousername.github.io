@@ -8,16 +8,17 @@ var unlockBttnPrice = 200
 var upgradeBttnTimePrice = JSON.parse(localStorage.getItem('upgradeBttnTimePrice'))
 var checkSave = JSON.parse(localStorage.getItem('checkSave'))
 var checkUnlock = JSON.parse(localStorage.getItem('checkUnlock'))
-if(checkSave == 1){setAllValue()} else {score = 0; upgradeBttnPriceFirst = 30; upgradeBttnTimePrice = 100; addScore = 1; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 1; checkUnlock = 0;}
+if(checkSave == 1){setAllValue()} else {score = 0; upgradeBttnPriceFirst = 30; upgradeBttnTimePrice = 100; addScore = 1; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; checkUnlock = 0;}
 checkUpgrade()
 setAllValue() 
 
 //CLICK CLICK CLICK 
 $('.clickBttn').click(function(){
+	clickSound()
 	score += addScore
 	$('.clickBttn').addClass("animationClick")
 		setTimeout(function(){ $('.clickBttn').removeClass("animationClick")
-			$('.score').css({'font-size': '3.7vw', 'top': '2.9vw'})
+			$('.score').css({'font-size': '3.7vw'})
 		}, 100)
 	checkUpgrade()
 	saveAll()
@@ -50,7 +51,7 @@ $('.upgradeBttn').click(function(){
 
 if(checkUnlock == 1){
 		$('.unlockBttn').remove()	
-		p = setInterval(clickTime, 60)
+		if(upgradeLevelSecond > 0)p = setInterval(clickTime, 60)
 		$('.unlockBttn').removeClass()
 		$('.lock_img').remove()
 		$('.clickContainerLock').remove()
@@ -102,8 +103,37 @@ function clickTime() {
 	y += 2
 	$('.barTime').css('background-size', "100%" + y + "%")
 }
+	
+var settingsTrue = false
+$('.settingsBttn').click(function(){
+	if(settingsTrue){
+		$('.settingsPanel').removeClass("settingsPanelStyle")
+		settingsTrue = false
+	} else {
+		$('.settingsPanel').addClass("settingsPanelStyle")
+		settingsTrue = true;
+	}
+})
+
+$('.restartGame').click(function(){
+	localStorage.setItem('checkSave', checkSave = 0)
+	location.reload()
+})
+var darkTheme = false
+$('.darkThemeBttn').click(function(){ if(darkTheme){$('body').css('background-color', '#fff'); $('.darkThemeBttn').html("DARK THEME OFF"); darkTheme = false} 
+	else { $('body').css('background-color', '#3b3b3b'); $('.darkThemeBttn').html("DARK THEME ON"); darkTheme = true }
+})
+var soundOffOn = true
+$('.soundOffOnBttn').click(function(){ if(soundOffOn){soundOffOn = false; $('.soundOffOnBttn').html("SOUND OFF")} else {soundOffOn = true; $('.soundOffOnBttn').html("SOUND ON")} })
 
 
+function clickSound () {
+	if(soundOffOn){
+	var audio = new Audio(); // Создаём новый элемент Audio
+	 audio.src = 'click_sound.mp3'; // Указываем путь к звуку "клика"
+	 audio.volume = 0.3;
+	 audio.autoplay = true; // Автоматически запускаем
+}}
 
 function checkUpgrade () {
 	if(score >= upgradeBttnPriceFirst) { $('.upgradeBttn').removeClass("unlockBttnNoMoney")} else { $('.upgradeBttn').addClass("unlockBttnNoMoney")}
@@ -112,14 +142,12 @@ function checkUpgrade () {
 }
 
 function setAllValue () {
-	console.log(upgradeBttnTimePrice)
 	$('.score').html("$" + score.toFixed(1))
 	$('.clickBttn').html("CLICK " + "$" + addScore)
 	$('.upgradeBttn').html("Upgrade " + "$" + upgradeBttnPriceFirst.toFixed(0))
 	$('.upgradeBttnTime').html("Upgrade " + "$" + upgradeBttnTimePrice.toFixed(0))
 	$('.upgradeLevelFirst').html("Level " + upgradeLevelFirst)
 	$('.upgradeLevelTime').html("Level " + upgradeLevelSecond)
-	$('.score').css({'font-size': '3.6vw', 'top': '3vw'})
 	$('.barTimeText2').html('$' + addScoreTime)
 }
 

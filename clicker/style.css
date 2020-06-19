@@ -8,7 +8,7 @@ body {
 
 .score {
 	position: fixed;
-	top: 3vw;
+	top: 9.5vw;
 	left: 80.5vw;
 	width: 16.5vw;
 	background-color: #C8DD4E;
@@ -181,15 +181,80 @@ body {
 	 border: 4px solid #b3b3b3; 
 	 color: #a8a8a8;
 }
+/*SECOND BLOCK SECOND BLOCK SECOND BLOCK*/
+
+
+
+/*SETTINGS SETTINGS SETTINGS SETTINGS*/
+
+
+.settingsBttn {
+	cursor: pointer;
+	background-color: #fff;
+	width: 5.1vw;
+	height: 5.1vw;
+	background-image: url('icon/settings_icon.png');
+	background-size: 100% 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: none;
+	position: absolute;
+	top: 2.9vw;
+    left: 91.7vw;
+}
+.settingsPanel{display: none;}
+.settingsPanel div {
+	text-align: center;
+	font-size: 24px;
+	width: 35vw;
+	cursor: pointer;
+	transition: .3s;
+}
+.settingsPanel div:hover {
+	background-color: #d9d9d9;
+}
+.settingsPanelStyle {
+	z-index: 1000;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 35vw;
+	height: 15vw;
+	background-color: #fff;
+	box-shadow: 0 0 20px 4px #e8e8e8;
+	border-radius: 24px;
+	position: absolute;
+	top: 9vw;
+	left: 63vw;
+}
+
+.content {
+	color: red;
+}
+
+
+/*SETTINGS SETTINGS SETTINGS SETTINGS*/
+
+
+
+
+
 
 
 
 @media screen and (max-width:480px){
 	.score {
 		width: 42vw;
-		font-size: 9vw !important;
-		top: 3vw;
-		left: 55vw;
+		font-size: 9vw;
+		top: 6vw;
+		left: 7vw;
+	}
+
+	.settingsBttn{
+		width: 60px;
+		height: 60px;
+		left: 80vw;
 	}
 
 	.upgradeContainer {
@@ -212,8 +277,6 @@ body {
 		top: 510px;
 	}
 }
-
-
 
 
 
