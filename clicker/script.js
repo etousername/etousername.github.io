@@ -173,6 +173,6 @@ function saveAll (){
 	localStorage.setItem('checkSave', JSON.stringify(checkSave = 1))
 }
 
-if(checkSave == 1){setAllValue()} else {checkSave = 0; score = 31200; upgradeBttnPriceFirst = 10; upgradeBttnTimePrice = 100; addScore = 0.2; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; multiplierPow = 1; checkUnlock = 0;}
+if(checkSave == 1){setAllValue()} else {checkSave = 0; score = 0; upgradeBttnPriceFirst = 10; upgradeBttnTimePrice = 100; addScore = 0.2; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; multiplierPow = 1; checkUnlock = 0;}
 checkUpgrade()
 setAllValue() 
