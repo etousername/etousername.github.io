@@ -8,17 +8,15 @@ var unlockBttnPrice = 200
 var upgradeBttnTimePrice = JSON.parse(localStorage.getItem('upgradeBttnTimePrice'))
 var checkSave = JSON.parse(localStorage.getItem('checkSave'))
 var checkUnlock = JSON.parse(localStorage.getItem('checkUnlock'))
-if(checkSave == 1){setAllValue()} else {score = 0; upgradeBttnPriceFirst = 30; upgradeBttnTimePrice = 100; addScore = 1; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; checkUnlock = 0;}
-checkUpgrade()
-setAllValue() 
+
 
 //CLICK CLICK CLICK 
 $('.clickBttn').click(function(){
 	clickSound()
 	score += addScore
+	score = +score.toPrecision(6)
 	$('.clickBttn').addClass("animationClick")
 		setTimeout(function(){ $('.clickBttn').removeClass("animationClick")
-			$('.score').css({'font-size': '3.7vw'})
 		}, 100)
 	checkUpgrade()
 	saveAll()
@@ -28,13 +26,15 @@ $('.clickBttn').click(function(){
 
 
 // UPGRADE UPGRADE UPGRADE
+var multiplierPow = JSON.parse(localStorage.getItem('multiplierPow'))
 $('.upgradeBttn').click(function(){
 	if(score >= upgradeBttnPriceFirst) {
 		score -= upgradeBttnPriceFirst
-		addScore += 0.5
 		upgradeLevelFirst++
-		upgradeBttnPriceFirst += upgradeBttnPriceFirst / 2 / 2
 
+		upgradeBttnPriceFirst = 10 * Math.pow(1.07, multiplierPow) 
+		multiplierPow++
+		addScore += 0.1
 		checkUpgrade()
 		setAllValue()
 		saveAll ()
@@ -80,10 +80,10 @@ $('.unlockBttn').click(function(){
 
 $('.upgradeBttnTime').click(function(){
 	if(score >= upgradeBttnTimePrice) {
-		if(upgradeBttnTimePrice == 100){p = setInterval(clickTime, 60)}
+		if(upgradeBttnTimePrice == 100){p = setInterval(clickTime, 50)}
 		score -= upgradeBttnTimePrice
 	 	addScoreTime += 0.5; 
-		upgradeBttnTimePrice += upgradeBttnTimePrice / 2 / 2
+		upgradeBttnTimePrice = 100 * Math.pow(1.07, upgradeLevelSecond)
 		upgradeLevelSecond++
 		setAllValue()
 		saveAll()
@@ -97,12 +97,14 @@ var p;
 var y = 0
 var sec = 0
 function clickTime() {
-	if(y == 100) {y = 0; sec = 0; score += addScoreTime; setAllValue(); checkUpgrade(); saveAll();}
-	$('.barTimeText1').html(((3000 - sec) / 1000).toFixed(1) + "sec")
-	sec += 60
-	y += 2
+	if(sec == 1000) {y = 0; sec = 0; score += addScoreTime; setAllValue(); checkUpgrade(); saveAll();}
+	$('.barTimeText1').html(((1000 - sec) / 1000).toFixed(1) + "sec")
+	sec += 50
+	y += 5
 	$('.barTime').css('background-size', "100%" + y + "%")
 }
+// SECOND BLOC SECOND BLOCK SECOND BLOCK
+
 	
 var settingsTrue = false
 $('.settingsBttn').click(function(){
@@ -116,8 +118,8 @@ $('.settingsBttn').click(function(){
 })
 
 $('.restartGame').click(function(){
-	localStorage.setItem('checkSave', checkSave = 0)
-	location.reload()
+	var acceptReload = confirm("Вы точно хотите перезаписать игру? Вы потеряете весь процесс!")
+	if(acceptReload){ localStorage.setItem('checkUnlock', checkUnlock = 0); localStorage.setItem('checkSave', checkSave = 0); location.reload() }
 })
 var darkTheme = false
 $('.darkThemeBttn').click(function(){ if(darkTheme){$('body').css('background-color', '#fff'); $('.darkThemeBttn').html("DARK THEME OFF"); darkTheme = false} 
@@ -126,6 +128,14 @@ $('.darkThemeBttn').click(function(){ if(darkTheme){$('body').css('background-co
 var soundOffOn = true
 $('.soundOffOnBttn').click(function(){ if(soundOffOn){soundOffOn = false; $('.soundOffOnBttn').html("SOUND OFF")} else {soundOffOn = true; $('.soundOffOnBttn').html("SOUND ON")} })
 
+loadScreen()
+var s = 0
+function loadScreen() {
+	if(s > 100){ $('.loadScreen').remove() }
+	$('.loadingFill').css('width', s + '%')
+	s += 20
+	setTimeout(loadScreen, 50)
+}
 
 function clickSound () {
 	if(soundOffOn){
@@ -143,8 +153,8 @@ function checkUpgrade () {
 
 function setAllValue () {
 	$('.score').html("$" + score.toFixed(1))
-	$('.clickBttn').html("CLICK " + "$" + addScore)
-	$('.upgradeBttn').html("Upgrade " + "$" + upgradeBttnPriceFirst.toFixed(0))
+	$('.clickBttn').html("CLICK " + "$" + addScore.toFixed(1))
+	$('.upgradeBttn').html("Upgrade " + "$" + upgradeBttnPriceFirst.toFixed(1))
 	$('.upgradeBttnTime').html("Upgrade " + "$" + upgradeBttnTimePrice.toFixed(0))
 	$('.upgradeLevelFirst').html("Level " + upgradeLevelFirst)
 	$('.upgradeLevelTime').html("Level " + upgradeLevelSecond)
@@ -159,5 +169,10 @@ function saveAll (){
 	localStorage.setItem('upgradeLevelSecond', JSON.stringify(upgradeLevelSecond))
 	localStorage.setItem('addScore', JSON.stringify(addScore))
 	localStorage.setItem('addScoreTime', JSON.stringify(addScoreTime))
+	localStorage.setItem('multiplierPow', JSON.stringify(multiplierPow))
 	localStorage.setItem('checkSave', JSON.stringify(checkSave = 1))
 }
+
+if(checkSave == 1){setAllValue()} else {checkSave = 0; score = 31200; upgradeBttnPriceFirst = 10; upgradeBttnTimePrice = 100; addScore = 0.2; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; multiplierPow = 1; checkUnlock = 0;}
+checkUpgrade()
+setAllValue() 

@@ -206,7 +206,7 @@ body {
 .settingsPanel div {
 	text-align: center;
 	font-size: 24px;
-	width: 35vw;
+	width: 25vw;
 	cursor: pointer;
 	transition: .3s;
 }
@@ -219,25 +219,43 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	width: 35vw;
+	width: 25vw;
 	height: 15vw;
 	background-color: #fff;
-	box-shadow: 0 0 20px 4px #e8e8e8;
+	box-shadow: 0 0 40px 2px #e8e8e8;
 	border-radius: 24px;
 	position: absolute;
 	top: 9vw;
-	left: 63vw;
+	left: 73vw;
 }
-
-.content {
-	color: red;
-}
-
 
 /*SETTINGS SETTINGS SETTINGS SETTINGS*/
 
 
 
+.loadScreen	{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: grey;
+	z-index: 1001;	
+}
+.loading {
+	width: 600px;
+	height: 80px;
+	background-color: #e9ff8a;
+	border-radius: 8px;
+}
+.loadingFill {
+	width: 0%;
+	height: 100%;
+	background-color: #d2ed5a;
+	border-radius: 8px;
+}
+.loadingText { width: 100%; font-size: 42px; margin-top: 14px; color: #fff; text-align: center;}
 
 
 
@@ -245,16 +263,26 @@ body {
 
 @media screen and (max-width:480px){
 	.score {
-		width: 42vw;
-		font-size: 9vw;
-		top: 6vw;
-		left: 7vw;
+		width: 48vw;
+		font-size: 12vw;
+		height: 16vw;
+		top: 3vw;
+		left: 3vw;
 	}
 
 	.settingsBttn{
 		width: 60px;
 		height: 60px;
 		left: 80vw;
+	}
+	.settingsPanelStyle {
+		width: 270px;
+		height: 330px; 
+		top: 25vw;
+		left: 14vw;
+	}
+	.settingsPanel div {
+		width: auto;
 	}
 
 	.upgradeContainer {
