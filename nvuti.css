@@ -124,10 +124,16 @@ form label:first-child {
 
 
 
+.doubleSumma {
+	position: absolute;
+	left: 255px;
+	top: 410px;
+	width: 110px
+}
 
-
-
-
-
-
-
+.maxSumma {
+	position: absolute;
+	left: 255px;
+	top: 440px;
+	width: 110px
+}
