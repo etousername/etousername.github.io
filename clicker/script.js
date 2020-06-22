@@ -173,6 +173,40 @@ function saveAll (){
 	localStorage.setItem('checkSave', JSON.stringify(checkSave = 1))
 }
 
-if(checkSave == 1){setAllValue()} else {checkSave = 0; score = 0; upgradeBttnPriceFirst = 10; upgradeBttnTimePrice = 100; addScore = 0.2; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; multiplierPow = 1; checkUnlock = 0;}
+if(checkSave == 1){setAllValue(); noUseTime()} else {checkSave = 0; score = 0; upgradeBttnPriceFirst = 10; upgradeBttnTimePrice = 100; addScore = 0.2; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; multiplierPow = 1; checkUnlock = 0;}
 checkUpgrade()
 setAllValue() 
+
+window.addEventListener("unload", function() {
+	var date = new Date()
+	var month = date.getMonth()
+	var day = date.getDate()
+	var hrs = date.getHours()
+	var minutes = date.getMinutes()
+	localStorage.setItem('month', JSON.stringify(month))
+	localStorage.setItem('day', JSON.stringify(day))
+	localStorage.setItem('hrs', JSON.stringify(hrs))
+	localStorage.setItem('minutes', JSON.stringify(minutes))
+});
+
+
+
+function noUseTime () {
+	var month = JSON.parse(localStorage.getItem('month'))
+	var day = JSON.parse(localStorage.getItem('day'))
+	var hrs = JSON.parse(localStorage.getItem('hrs'))
+	var minutes = JSON.parse(localStorage.getItem('minutes'))
+	console.log(hrs)
+	console.log(minutes)
+
+	var startDate = new Date()
+	var pastMinutes = 60 - minutes + startDate.getMinutes();
+	var pastHrs = startDate.getHours() - hrs
+	if(pastMinutes >= 60){ pastMinutes -= 60 } else { pastHrs-- }
+	pastMinutes = pastMinutes + pastHrs * 60
+	var noUseTimeScore = pastMinutes * 3600 * addScoreTime
+	if(noUseTimeScore != 0){ alert("Пока вас небыло вы заработали: " + (pastMinutes * 3600) * addScoreTime); score += noUseTimeScore; }
+	console.log(pastMinutes)
+}
+
+
