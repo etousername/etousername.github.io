@@ -141,7 +141,6 @@ body {
 	border-radius: 24px;
 	background-color: #3a3315;
 	opacity: 60%;
-	box-shadow: 0 0 10px #3a3315; 
 }
 
 .unlockBttn {
@@ -261,50 +260,7 @@ body {
 
 
 
-@media screen and (max-width:480px){
-	.score {
-		width: 48vw;
-		font-size: 12vw;
-		height: 16vw;
-		top: 3vw;
-		left: 3vw;
-	}
 
-	.settingsBttn{
-		width: 60px;
-		height: 60px;
-		left: 80vw;
-	}
-	.settingsPanelStyle {
-		width: 270px;
-		height: 330px; 
-		top: 25vw;
-		left: 14vw;
-	}
-	.settingsPanel div {
-		width: auto;
-	}
-
-	.upgradeContainer {
-		margin-top: 100px;
-		margin-left: 0;
-		margin-right: 0;
-	}
-
-	.container {
-		width: 266px;
-		margin: 0 auto;
-	}
-
-	.upgradeContainer:last-child {margin-top: 30px;}
-
-	.unlockBttn {
-		top: 685px;
-	}
-	.lock_img {
-		top: 510px;
-	}
-}
 
 
 
@@ -341,3 +297,160 @@ body {
 	transform: rotate(-1deg);
 	background-color: #F9E6B2;
 }}
+
+
+.boost {
+	width: 400px;
+	height: 200px;
+	background-color: white;
+	box-shadow: 0 6px 30px 1px #d9d9d9;
+	border-radius: 24px;
+	position: absolute;
+	top: 600px;
+	left: 920px;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+}
+
+.textBoost {
+	text-align: center;
+	margin-top: 35px;
+	font-size: 32px;
+}
+
+.boostBttn {
+	width: 160px;
+	height: 40px;
+	font-size: 24px;
+	margin-top: 40px;
+	color: #3b3b3b;
+	background-color: white;
+	border: 1px solid #3b3b3b;
+	border-radius: 4px;
+}
+.boostBttn:hover {
+	color: white;
+	background-color: #3b3b3b;
+	border: none;
+	width: 164px;
+	height: 42px;
+}
+
+.boostClose{
+	position: absolute;
+	top: 170px;
+	color: #8f8f8f;
+	border: none;
+	background: none;
+	transition: .4s;
+}
+.boostClose:hover { color: #3b3b3b; }
+button {
+	cursor: pointer;
+}
+
+.boostTime {
+	position: fixed;
+	top: 14.5vw;
+	left: 81.5vw;
+	width: 15vw;
+	font-size: 1.5vw;
+	text-align: center;
+	color: #3b3b3b; 
+	display: none;
+}
+
+
+
+
+
+@media screen and (max-width:480px){
+	.score {
+		width: 48vw;
+		font-size: 12vw;
+		height: 16vw;
+		top: 3vw;
+		left: 3vw;
+	}
+
+	.settingsBttn{
+		width: 60px;
+		height: 60px;
+		left: 80vw;
+	}
+	.settingsPanelStyle {
+		width: 80vw;
+		height: 80vw; 
+		top: 23vw;
+		left: 10vw;
+	}
+	.settingsPanel div {
+		width: auto;
+	}
+
+	.upgradeContainer {
+		margin-top: 100px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.container {
+		width: 266px;
+		margin: 0 auto;
+	}
+
+	.upgradeContainer:last-child {margin-top: 30px;}
+
+	.unlockBttn {
+		top: 685px;
+	}
+	.lock_img {
+		top: 510px;
+	}
+
+
+	.boostCenter {
+		width: 100vw;
+		display: flex;
+		justify-content: center;
+	}
+	.boost {
+		width: 90vw;
+		height: 55vw;
+		box-shadow: 0 10px 30px #d9d9d9;
+		top: 200vw;
+		bottom: 0;
+		left: auto;
+		position: fixed;
+		display: none;
+		flex-direction: column;
+		align-items: center;
+	}
+	.textBoost {
+		text-align: center;
+		margin-top: 7vw;
+		font-size: 10vw;
+	}
+
+	.boostBttn {
+		width: 46vw !important;
+		height: 12vw !important;
+		font-size: 5.5vw;
+		margin-top: 8vw;
+		color: #3b3b3b;
+		background-color: white;
+		border: 1px solid #3b3b3b;
+		border-radius: 4px;
+	}
+	.boostClose {
+		top: 42vw;
+		font-size: 4vw;
+	}
+	.boostTime {
+		top: 6vw;
+		left: 55vw;
+		width: 20vw;
+		font-size: 5vw;
+	}
+}

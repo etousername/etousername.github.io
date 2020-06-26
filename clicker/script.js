@@ -34,7 +34,7 @@ $('.upgradeBttn').click(function(){
 
 		upgradeBttnPriceFirst = 10 * Math.pow(1.07, multiplierPow) 
 		multiplierPow++
-		addScore += 0.1
+		if(boostActive){addScore += 0.2} else{ addScore += 0.1}
 		checkUpgrade()
 		setAllValue()
 		saveAll ()
@@ -128,7 +128,7 @@ $('.darkThemeBttn').click(function(){ if(darkTheme){$('body').css('background-co
 var soundOffOn = true
 $('.soundOffOnBttn').click(function(){ if(soundOffOn){soundOffOn = false; $('.soundOffOnBttn').html("SOUND OFF")} else {soundOffOn = true; $('.soundOffOnBttn').html("SOUND ON")} })
 
-loadScreen()
+//loadScreen()
 var s = 0
 function loadScreen() {
 	if(s > 100){ $('.loadScreen').remove() }
@@ -161,6 +161,42 @@ function setAllValue () {
 	$('.barTimeText2').html('$' + addScoreTime)
 }
 
+setInterval(boost, 180000)
+var pageHeight = document.documentElement.clientHeight;
+var pageWidth = document.documentElement.clientWidth;
+console.log(pageHeight)
+var boostTrue = false
+function boost () {
+	if(!boostTrue) {
+		if(pageWidth < 480) {
+			if(pageHeight > 800 && pageHeight < 900){ $('.boost').css('display', 'flex').animate({top: '-=190px'}, 400).fadeIn(200); console.log(">800")}
+			else if(pageHeight < 800 && pageHeight > 700){ $('.boost').css('display', 'flex').animate({top: '-=330px'}, 400).fadeIn(200); console.log(">700")}
+			else if(pageHeight < 700 && pageHeight > 600){ $('.boost').css('display', 'flex').animate({top: '-=320px'}, 400).fadeIn(200); console.log(">600")}
+			else if(pageHeight < 600 && pageHeight > 500){ $('.boost').css('display', 'flex').animate({top: '-=270px'}, 400).fadeIn(200); console.log(">500")}
+		} else { $('.boost').css('display', 'flex').animate({top: '-=180px'}, 400).fadeIn(200); console.log("standart") }
+		boostAnimStart()
+		function boostAnimStart (){	$('.boostBttn').animate({width: '168px', height: '44px', marginTop: '-=2px'}, 300); setTimeout(boostAnimEnd, 300)}
+		function boostAnimEnd (){ $('.boostBttn').animate({width: '160px', height: '40px', marginTop: '+=2px'}, 300); setTimeout(boostAnimStart, 300)}
+		boostTrue = true
+	}
+}
+var boostActive = false
+$('.boostBttn').click(function(){
+		boostActive = true
+		addScore = addScore * 2;
+		setAllValue()
+		$('.boostTime').slideToggle(100)
+		var seconds30 = 30000
+		$('.boostTime').html('x2 00:' + seconds30 / 1000)
+		var z = setInterval(function(){
+			$('.boostTime').html('x2 00:' + seconds30 / 1000)
+			seconds30 -= 1000
+			if(seconds30 < 0) {seconds30 = 30000; boostTrue = false; boostActive = false; clearInterval(z); $('.boostTime').slideToggle(100); addScore = addScore / 2; setAllValue(); console.log(addScore);}
+		}, 1000)
+		$('.boost').animate({top: '+=180px'}, 400).fadeOut(100)
+	})
+$('.boostClose').click(function(){boostTrue = false; $('.boost').fadeOut(300).animate({top: '+=180px'}, 400)})
+
 function saveAll (){
 	localStorage.setItem('score', JSON.stringify(score))
 	localStorage.setItem('upgradeBttnPriceFirst', JSON.stringify(upgradeBttnPriceFirst))
@@ -176,6 +212,8 @@ function saveAll (){
 if(checkSave == 1){setAllValue(); noUseTime()} else {checkSave = 0; score = 0; upgradeBttnPriceFirst = 10; upgradeBttnTimePrice = 100; addScore = 0.2; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; multiplierPow = 1; checkUnlock = 0;}
 checkUpgrade()
 setAllValue() 
+
+
 
 window.addEventListener("unload", function() {
 	var date = new Date()
@@ -204,9 +242,8 @@ function noUseTime () {
 	var pastHrs = startDate.getHours() - hrs
 	if(pastMinutes >= 60){ pastMinutes -= 60 } else { pastHrs-- }
 	pastMinutes = pastMinutes + pastHrs * 60
-	var noUseTimeScore = pastMinutes * 3600 * addScoreTime
-	if(noUseTimeScore != 0){ alert("Пока вас небыло вы заработали: " + (pastMinutes * 3600) * addScoreTime); score += noUseTimeScore; }
+	var noUseTimeScore = pastMinutes * 60 * addScoreTime
+	if(noUseTimeScore != 0){ alert("Пока вас небыло вы заработали: " + noUseTimeScore); score += noUseTimeScore; }
 	console.log(pastMinutes)
+	console.log(noUseTimeScore)
 }
-
-
