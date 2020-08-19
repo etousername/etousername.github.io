@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="select_mode">
+        <button class="one_player">1 PLAYER</button>
+        <button class="two_player">2 PLAYER</button>
+
+        <div class="instructions">PLAY ONLY PC. FIRST PLAYER USE "W" and "S", SECOND PLAYER USE "Arrow Up" and "Arrow Down".</div>
+    </div>
+
+    <div class="score" style="display: none">0 : 0</div>
+
+    <canvas id="game" width="700" height="400"></canvas>
+    <div class="press_space">PRESS SPACE TO PLAY</div>
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

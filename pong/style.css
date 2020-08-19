@@ -1,0 +1,64 @@
+body {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-family: 'Staatliches', cursive;
+}
+
+#game {
+    display: none;
+    margin-top: 20px;
+}
+
+.select_mode {
+    margin-top: 20px;
+    width: 700px;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #000;
+}
+
+.one_player {
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    font-family: 'Staatliches', cursive;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.two_player {
+    width: 100px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    font-family: 'Staatliches', cursive;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.instructions {
+    color: white;
+    position: absolute;
+    top: 390px;
+    font-size: 18px;
+}
+
+.press_space {
+    display: none;
+    position: absolute;
+    top: 360px;
+    color: #fff;
+    letter-spacing: 3px;
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.score {
+    position: absolute;
+    top: 430px;
+    font-size: 60px;
+}
