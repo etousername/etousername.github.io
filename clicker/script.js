@@ -32,9 +32,9 @@ $('.upgradeBttn').click(function(){
 		score -= upgradeBttnPriceFirst
 		upgradeLevelFirst++
 
-		upgradeBttnPriceFirst = 10 * Math.pow(1.07, multiplierPow) 
+		upgradeBttnPriceFirst = 2 * Math.pow(1.06, multiplierPow) 
 		multiplierPow++
-		if(boostActive){addScore += 0.2} else{ addScore += 0.1}
+		if(boostActive){addScore += addScore += 0.2 * Math.pow(1.04, multiplierPow) * 2} else{ addScore += 0.2 * Math.pow(1.04, multiplierPow) }
 		checkUpgrade()
 		setAllValue()
 		saveAll ()
@@ -80,10 +80,10 @@ $('.unlockBttn').click(function(){
 
 $('.upgradeBttnTime').click(function(){
 	if(score >= upgradeBttnTimePrice) {
-		if(upgradeBttnTimePrice == 100){p = setInterval(clickTime, 50)}
+		if(upgradeBttnTimePrice == 20){p = setInterval(clickTime, 50)}
 		score -= upgradeBttnTimePrice
-	 	addScoreTime += 0.5; 
-		upgradeBttnTimePrice = 100 * Math.pow(1.07, upgradeLevelSecond)
+	 	addScoreTime += 10; 
+		upgradeBttnTimePrice = 40 * Math.pow(1.07, upgradeLevelSecond)
 		upgradeLevelSecond++
 		setAllValue()
 		saveAll()
@@ -209,7 +209,7 @@ function saveAll (){
 	localStorage.setItem('checkSave', JSON.stringify(checkSave = 1))
 }
 
-if(checkSave == 1){setAllValue(); noUseTime()} else {checkSave = 0; score = 0; upgradeBttnPriceFirst = 10; upgradeBttnTimePrice = 100; addScore = 0.2; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; multiplierPow = 1; checkUnlock = 0;}
+if(checkSave == 1){setAllValue(); noUseTime()} else {checkSave = 0; score = 0; upgradeBttnPriceFirst = 2; upgradeBttnTimePrice = 20; addScore = 0.2; addScoreTime = 0; upgradeLevelFirst = 1; upgradeLevelSecond = 0; multiplierPow = 1; checkUnlock = 0;}
 checkUpgrade()
 setAllValue() 
 
@@ -247,3 +247,28 @@ function noUseTime () {
 	console.log(pastMinutes)
 	console.log(noUseTimeScore)
 }
+
+
+
+
+
+
+
+
+
+
+
+$('.getMoneyBttn').click(function(){
+	if($('.getMoney').val() == "update") {
+		score += 10000
+		alert("Вы получили 10 000 за промокод update")
+		setAllValue() 
+	} else if ($('.getMoney').val() == "updateMAX") {
+		score += 5000000
+		alert("Вы получили 5 000 000 за промокод updateMAX")
+		setAllValue() 
+	} else {
+		alert("Error: false code")
+		console.log($('.getMoney').val())
+	}
+})
